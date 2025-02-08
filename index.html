@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Montoya Captcha - Prove your heart broken 💔</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="favicon.ico"/>
+
+    <meta property="og:image" content="https://vivirenremoto.github.io/montoyacaptcha/social.jpg">
+    <meta property="og:image:secure_url" content="https://vivirenremoto.github.io/montoyacaptcha/social.jpg">
+    <meta property="og:image:alt" content="Montoya Captcha">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Montoya Captcha">
+    <meta name="twitter:image" content="https://vivirenremoto.github.io/montoyacaptcha/social.jpg">
+
+
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <link rel="prefetch" href="music.mp3" />
+    <link rel="prefetch" href="ok.mp3" />
+    <link rel="prefetch" href="montoya.mp3" />
+    <link rel="prefetch" href="switch.mp3" />
+</head>
+<body>
+
+
+<h1>Montoya Captcha - Prove your heart broken 💔</h1>
+
+<audio id="sound_music" loop="true">
+    <source src="music.mp3" type="audio/mp3">
+</audio>
+<audio id="sound_ok">
+    <source src="ok.mp3" type="audio/mp3">
+</audio>
+<audio id="sound_switch">
+    <source src="switch.mp3" type="audio/mp3">
+</audio>
+<audio id="sound_montoya">
+    <source src="montoya.mp3" type="audio/mp3">
+</audio>
+
+<style>
+body {
+    font-family: arial;
+}
+
+.reverse {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+button{cursor:pointer;}
+
+#captcha, #captcha *{font-family: 'VT323', monospace;}
+#captcha button{font-size:20px;}
+
+.btn_mini{display:block;margin:auto;margin-top:0;border:0;border:1px white solid;color:white;background:none;}
+</style>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+
+<div id="mobile_controls" style="display:none">
+    <button onclick="moveLeft()" style="width:48%;position:fixed;left:0;bottom:0;color:white;background:gray;text-align:center;font-size:40px;"><span style="display:block;padding:30px 0">&larr;</span></button>
+    <button onclick="moveRight()" style="width:48%;position:fixed;right:0;bottom:0;color:white;background:gray;text-align:center;font-size:40px;"><span style="display:block;padding:30px 0">&rarr;</span></button>
+</div>
+
+
+Intructions: Press "Start" and follow the yellow arrow you can use the keyboard or the arrow buttons
+
+
+<div style="width:200px;height:100px;border:1px black solid;" id="captcha">
+
+
+<div id="info" style="display:block;position:absolute;z-index:3;color:white;background:#000;width:200px;height:100px;text-align:center;justify-content: center;align-items: center;">
+    <div style="padding-top:20px;">
+        
+        <span style="color:red">PROVE YOUR HEART BROKEN</span>
+        <br><br>
+        <button id="btn_play" class="btn_mini">START</button>
+    </div>
+</div>
+
+<div id="ok" style="display:none;position:absolute;z-index:3;color:white;background:#31AE33;width:200px;height:100px;text-align:center;justify-content: center;align-items: center;">
+    <div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+        <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+    </svg>
+    <button id="btn_again" class="btn_mini">PLAY AGAIN?</button>
+    </div>
+</div>
+
+
+<div style="height:85px;position:absolute;width:200px;z-index:1;">
+    <img src="arrow.png" id="arrow_img">
+</div>
+
+<div style="height:85px;background:url('bg.gif') no-repeat center center;background-size:300px;background-position:-30px -70px" id="captcha_box">
+    &nbsp;
+</div>
+
+<div style="height:15px;background:red;">
+    <div style="height:15px;background:green;width:0%" id="status_bar">
+    </div>
+</div>
+
+</div>
+
+
+<form action="sent.html" method="post">
+    <p><input placeholder="input example"></p>
+    <p><button type="button" onclick="checkForm()">Submit</button></p>
+</form>
+
+
+<br><br>
+
+<p>Check my another crazy captchas:</p>
+<ul>
+    <li><a href="https://vivirenremoto.github.io/doomcaptcha/" target="_blank">Doom Captcha</a></li>
+    <li><a href="https://www.producthunt.com/posts/squat-captcha" target="_blank">Squat Captcha</a></li>
+    <li><a href="https://vivirenremoto.github.io/" target="_blank">More sideprojects</a></li>
+</ul>
+
+<br><br>
+
+Follow me <a href="https://x.com/vivirenremoto" target="_blank">@vivirenremoto</a>
+
+<script>
+var random_arrow_current;
+var random_arrow;
+var status_bar = $('#status_bar');
+var captcha_box = $('#captcha_box');
+var arrow_img = $('#arrow_img');
+var status_percent = 0;
+var status_diff = 0.5;
+var status_jump = randomIntFromInterval(15, 20);
+var status_complete = false;
+var keypress;
+randomArrow(true);
+
+function checkForm(){
+    if( status_complete ){
+        $('form').submit();
+    }else{
+        alert('complete the montoya captcha first!');
+    }
+}
+
+function randomIntFromInterval(min, max) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function randomArrow(force){
+    random_arrow = (Math.random()>=0.5)? 'ArrowLeft' : 'ArrowRight';
+
+
+    if( force ){
+        if( random_arrow_current == random_arrow ){
+            if( random_arrow_current == 'ArrowLeft'){
+                random_arrow = 'ArrowRight';
+            }else{
+                
+                random_arrow = 'ArrowLeft';
+            }
+        }
+    }
+
+    if( random_arrow_current != random_arrow ){
+        random_arrow_current = random_arrow;
+        playSound('switch');
+    }
+
+    if( random_arrow == 'ArrowLeft' ){
+        $(arrow_img).addClass('reverse');
+    }else{
+        
+        //$(arrow_img).removeClass('reverse');
+        $(arrow_img).removeClass('reverse');
+    }
+}
+
+
+function playSound(id) {
+    $('#sound_' + id)[0].currentTime = 0;
+    $('#sound_' + id)[0].play();
+}
+
+function moveLeft(){
+    status_diff=1;
+    keypress = 'ArrowLeft';
+    move();
+}
+
+function moveRight(){
+    status_diff=1;
+    keypress = 'ArrowRight';
+    move();
+}
+
+function move(){
+
+
+        if( keypress == random_arrow ){
+            status_percent+=status_diff;
+        }else{
+            status_percent-=status_diff;
+        }
+
+        if( keypress == 'ArrowLeft'){
+            $(captcha_box).addClass('reverse');
+
+        }else{
+            $(captcha_box).removeClass('reverse');
+
+        }
+
+
+        //console.log(key+"---"+random_arrow+'='+status_percent);
+
+
+        if( status_percent >= 100 ){
+            status_complete = true;
+            status_percent = 100;
+            playSound('ok');
+            $('#ok').show();
+            $('#sound_music')[0].pause();
+            $('#mobile_controls').hide();
+
+        }else{
+
+
+            if(status_percent && status_percent%status_jump==0){
+                randomArrow(false);
+                status_jump = randomIntFromInterval(15, 20);
+            }
+
+
+
+
+        }
+
+        
+        $(status_bar).css('width',status_percent+'%');
+}
+
+$(document).keydown(function(e) {
+    if( !status_complete ){
+        keypress = event.key;
+
+        move();
+    }
+
+});
+
+
+$(function(){
+    $('#btn_again').click(function(){
+        status_complete = false;
+        status_percent = 0;
+        status_jump = randomIntFromInterval(15, 20);
+        $(status_bar).css('width',status_percent+'%');
+        $('#ok').hide();
+        $('#mobile_controls').show();
+        playSound('music');
+        randomArrow(true);
+    });
+
+    $('#btn_play').click(function(){
+        playSound('montoya');
+        playSound('music');
+        $('#info').hide();
+        $('#mobile_controls').show();
+    })
+})
+</script>
+
+</body>
+</html>
