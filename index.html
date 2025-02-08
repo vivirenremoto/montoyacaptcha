@@ -103,7 +103,7 @@ Instructions: Press "Start" and follow the yellow arrow you can use the keyboard
 
 
 <div style="height:85px;position:absolute;width:200px;z-index:1;">
-    <img src="arrow.png" id="arrow_img">
+    <img src="arrow.gif" id="arrow_img">
 </div>
 
 <div style="height:85px;background:url('bg.gif') no-repeat center center;background-size:300px;background-position:-30px -70px" id="captcha_box">
@@ -144,8 +144,8 @@ var status_bar = $('#status_bar');
 var captcha_box = $('#captcha_box');
 var arrow_img = $('#arrow_img');
 var status_percent = 0;
-var status_diff = 0.5;
-var status_jump = randomIntFromInterval(15, 20);
+var status_diff = 2;
+var status_jump = randomIntFromInterval(14, 24);
 var status_complete = false;
 var keypress;
 randomArrow(true);
@@ -201,13 +201,13 @@ function playSound(id) {
 }
 
 function moveLeft(){
-    status_diff=1;
+    status_diff=2;
     keypress = 'ArrowLeft';
     move();
 }
 
 function moveRight(){
-    status_diff=1;
+    status_diff=2;
     keypress = 'ArrowRight';
     move();
 }
