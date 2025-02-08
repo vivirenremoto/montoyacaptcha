@@ -179,7 +179,10 @@ function randomArrow(force){
 
     if( random_arrow_current != random_arrow ){
         random_arrow_current = random_arrow;
-        playSound('switch');
+
+        if( status_percent > 0 ){
+            playSound('switch');
+        }
     }
 
     if( random_arrow == 'ArrowLeft' ){
