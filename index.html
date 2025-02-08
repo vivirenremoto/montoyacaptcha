@@ -102,8 +102,8 @@ Instructions: Press "Start" and follow the yellow arrow you can use the keyboard
 </div>
 
 
-<div style="height:85px;position:absolute;width:200px;z-index:1;">
-    <img src="arrow.gif" id="arrow_img">
+<div style="height:85px;position:absolute;width:200px;z-index:1;text-align:right;" id="arrow_img">
+    <img src="arrow.gif">
 </div>
 
 <div style="height:85px;background:url('bg.gif') no-repeat center center;background-size:300px;background-position:-30px -70px" id="captcha_box">
@@ -145,7 +145,7 @@ var captcha_box = $('#captcha_box');
 var arrow_img = $('#arrow_img');
 var status_percent = 0;
 var status_diff = 2;
-var status_jump = randomIntFromInterval(14, 24);
+var status_jump = randomIntFromInterval(10, 20);
 var status_complete = false;
 var keypress;
 randomArrow(true);
@@ -246,7 +246,7 @@ function move(){
 
             if(status_percent && status_percent%status_jump==0){
                 randomArrow(false);
-                status_jump = randomIntFromInterval(15, 20);
+                status_jump = randomIntFromInterval(10, 20);
             }
 
 
